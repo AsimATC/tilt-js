@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.0.3/tilt.jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        strong {
+            font-weight: 500;
+        }
+
+        body {
+            font-family: 'Fira Sans';
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.5;
+            font-weight: 300;
+            padding: 4em;
+        }
+
+        .c-logo {
+            box-shadow: 0 20px 27px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 4em;
+            font-weight: 300;
+            transform-style: preserve-3d;
+            transform: perspective(500px);
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        }
+
+        .c-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            box-shadow: 0 20px 70px -10px rgba(black, .7), 0 50px 100px 0 rgba(black, .2);
+            z-index: -1;
+            transform: translateZ(-20px);
+            transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        }
+
+        .c-logo>span {
+            position: absolute;
+            display: block;
+            transform: translateZ(80px) scale(.7);
+        }
+
+        .c-logo :hover:after {
+            transform: translateZ(-50px);
+        }
+
+        .c-button {
+            border-radius: 5px;
+            background: linear-gradient(to right, #00803b, #004347);
+            padding: .5em 1em;
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-height: 600px) {
+
+            body>*:not(.c-logo) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <a class="c-logo" href="#" title="Tilt.js demo website">
+        <span>Tilt.js</span>
+        <img src="http://placeimg.com/300/300/tech" alt="">
+    </a>
+
+    <script>$('.c-logo').tilt({
+            maxTilt: 5,
+            perspective: 1000,   // Transform perspective, the lower the more extreme the tilt gets.
+            easing: "cubic-bezier(0.250, 0.460, 0.450, 0.940)",    // Easing on enter/exit.
+            scale: 1.1,      // 2 = 200%, 1.5 = 150%, etc..
+            speed: 300,    // Speed of the enter/exit transition.
+            transition: true,   // Set a transition on enter/exit.
+            disableAxis: null,   // What axis should be disabled. Can be X or Y.
+            reset: true,   // If the tilt effect has to be reset on exit.
+            glare: true,  // Enables glare effect
+            maxGlare: 0.3       // From 0 - 1.
+        })</script>
+
+</body>
+
+</html>
